@@ -19,15 +19,6 @@
 //     }
 // }
 
-// function dbconnect() {
-//     $db = new PDO("mysql:host=localhost;charset=utf8;dbname=daytripper", "root", "");
-//     if (!$db) {
-// 		die($db->error);
-// 	}
-
-//     return $db;
-// }
-
 function sanitize($before)
 {
     foreach($before as $key=>$value)

@@ -3,6 +3,10 @@ a {
   color: #000;
 }
 
+h1 {
+  text-align: center;
+}
+
 .btn {
   width: 150px;
   height: 50px;
@@ -11,6 +15,7 @@ a {
   border-radius: 5px;
   padding: 10px;
   position: relative;
+  right: 50px;
   top: -60px;
 }
 
@@ -18,8 +23,14 @@ a {
   background-color: #ee4848fa ;
 }
 
-.form {
+.wrapper {
   text-align: center;
+}
+
+.form {
+  width: 1200px;
+  text-align: center;
+  margin: auto;
 }
 
 .tex {
@@ -29,10 +40,64 @@ a {
 
 .textb {
   width: 500px;
-  height: 50px;
+  height: 70px;
 }
 
+.bottom {
+  margin-top: 100px;
+  text-align: center;
+}
 
+.img_style {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(256px, 1fr));
+  column-gap: 10px;
+  row-gap: 1em;
+  display: inline-block;
+  padding: 0.5em 0.5em;
+  margin: 2em 0;
+  font-weight: bold;
+  font-size: 20px;
+  color: #6091d3;/*文字色*/
+  background: #FFF;
+  border: solid 3px #6091d3;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+
+.img_style a {
+  text-decoration: none;
+}
+
+.show {
+  text-align: center;
+  width: 1000px;
+  margin:auto;
+}
+
+.table {
+  text-align: center;
+  margin: auto;
+  width: 1000px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: solid 1px #778ca3;
+ }
+
+ .table tr:nth-child(2n+1) {
+  background: #f3f3f2;
+ }
+
+ .table th,.table td {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
+ }
+ .table th {
+  width: 70px;
+ }
+
+ .pic {
+  text-align: center;
+ }
 
 @media screen and (max-width:450px) {
   h1 {
@@ -55,19 +120,29 @@ a {
     background-color: #ee4848fa ;
   }
 
+  .form {
+    text-align: center;
+    width: 400px;
+  }
+
   .wrapper {
-    width: 370px;
+    width: 100%;
     margin: auto;
   }
 
   .tex {
     width: 350px;
-    height: 22px;
+    height: 27px;
   }
 
   .textb {
     width: 350px;
-    height: 50px;
+    height: 70px;
+  }
+
+  .img_style{
+    display: inline-block;
+    margin: 0 0 10px 0;
   }
 
 }
