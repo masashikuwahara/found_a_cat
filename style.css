@@ -99,6 +99,26 @@ h1 {
   text-align: center;
  }
 
+ .success {
+  text-align: center;
+  font-size: 25px;
+ }
+
+ .failure {
+  text-align: center;
+  font-size: 25px;
+ }
+
+ .f {
+  width: 1000px;
+  text-align: center;
+  margin: auto;
+ }
+
+ .cp_ipradio {
+  margin-bottom: 50px;
+ }
+
 @media screen and (max-width:450px) {
   h1 {
     text-align: center;
@@ -144,5 +164,20 @@ h1 {
     display: inline-block;
     margin: 0 0 10px 0;
   }
+
+  .f {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+   }
+
+  .success {
+    text-align: center;
+    font-size: 25px;
+   }
+
+   .cp_ipradio {
+    margin-bottom: 150px;
+   }
 
 }
