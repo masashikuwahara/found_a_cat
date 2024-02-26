@@ -19,9 +19,10 @@
     <title><?php echo $s ?>の検索結果</title>
 </head>
 <body>
+  <?php require_once('header.php'); ?>
   <div class="search">
     <?php
-    echo "<div class='s'> 「{$s}」の検索結果</div>";
+    echo "<div class='success'> 「{$s}」の検索結果</div>";
 
     if($_GET["s"] != ''){
       $stmt=$dbh->prepare("SELECT * FROM cats WHERE title like '%$my_sea%'");
@@ -39,10 +40,10 @@
           echo "<hr>".'</div>';
         } 
       }else{
-        echo '<div class="result">そのキーワードでは見つかりませんでした</div>';
+        echo '<div class="failure">そのキーワードでは見つかりませんでした</div>';
       }
     }else{
-      echo '<div class="result">キーワードを入力してください</div>';
+      echo '<div class="failure">キーワードを入力してください</div>';
     }
     ?>
     <p style="text-align: center;">もう一度検索する</p>

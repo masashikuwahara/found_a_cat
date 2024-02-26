@@ -7,8 +7,7 @@
   <title>猫見つけた！</title>
 </head>
 <body>
-  <h1>猫見つけた！</h1>
-  <div style="text-align: right;"><a href="new.php" class="btn">投稿する</a></div>
+  <?php require_once('header.php'); ?>
   <div class="wrapper">
     ここに説明ここに説明ここに説明ここに説明ここに説明ここに説明ここに説明<br/>
     フリーワード検索<br/>

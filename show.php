@@ -92,6 +92,7 @@ $cats_img3=$cat['img3'];
       }
 
     ?>
+    <?php require_once('header.php'); ?>
     <h1><?php echo $cats_title ?></h1>
     <div class="pic">
       <?php 
