@@ -9,61 +9,58 @@
 <body>
   <?php require_once('header.php'); ?>
   <div class="wrapper">
-    ここに説明ここに説明ここに説明ここに説明ここに説明ここに説明ここに説明<br/>
+    このサイトは地域に住み着いている地域猫、道端などでみつけた猫などを<br/>
+    投稿、共有するサイトです。右上の投稿ボタンから猫を投稿し、共有することができます。<br/><br/>
     フリーワード検索<br/>
     <form  style="text-align: center;" class="cp_ipradio" action="search.php" method="get">
       <input class="sea" type="text" name="s" placeholder="">
       <input class="" type="submit" value="検索する">
     </form>
     <?php
-      try
+    if (isset($_GET['page'])) {
+      $page = (int)$_GET['page'];
+    } else {
+      $page = 1;
+    }
+    
+    if ($page > 1) {
+      $start = ($page * 8) - 8;
+    } else {
+      $start = 0;
+    }
+    
+    require_once('connect.php');
+    $dbh->query('SET NAMES utf8');
+    $cats = $dbh->prepare(" SELECT id,title,kind,img1 FROM cats 
+    ORDER BY id DESC LIMIT {$start}, 8 ");
+    $cats->execute();
+    $cats = $cats->fetchAll(PDO::FETCH_ASSOC);
+    
+    foreach ($cats as $post) {
+      if($post['img1']=='')
       {
-        require_once('connect.php');
-        $dbh->query('SET NAMES utf8');
-        $sql='SELECT id,title,kind,img1 FROM cats ORDER BY id DESC';
-        $stmt=$dbh->prepare($sql);
-        $stmt->execute();
-  
-        $dbh=null;
-  
-        while(true)
-        {
-          $rec=$stmt->fetch(PDO::FETCH_ASSOC);
-          if($rec==false)
-          {
-            break;
-          }
-  
-          if($rec['img1']=='')
-          {
-            $img_name='';
-          }
-          else
-          {
-            $img_name='<img style="width:360px" src="img/'.$rec['img1'].'">';
-          }
+        $img_name='';
+      } else {
+        $img_name='<img style="width:360px" src="img/'.$post['img1'].'">';
+      }
+      
+      echo '<span class="img_style">';
+      echo $post['kind'].'</br>';
+      echo '<a href="show.php?id='.$post['id'].'">';
+      echo $post['title'].'<br />'.$img_name.'</a>'.'</span>';
+    }
+    
+    $page_num = $dbh->prepare(" SELECT COUNT(*) id FROM cats ");
+    $page_num->execute();
+    $page_num = $page_num->fetchColumn();
 
-          echo '<span class="img_style">';
-          if($rec['kind'] == '地域猫'){
-            echo $rec['kind'] .'</br>';
-          }elseif($rec['kind'] == '野良猫'){
-            echo $rec['kind'].'</br>' ;
-          }elseif($rec['kind'] == '飼い猫'){
-            echo $rec['kind'] .'</br>';
-          }else{
-            echo $rec['kind'] .'</br>';
-          }
-          echo '<a href="show.php?id='.$rec['id'].'">';
-          echo $rec['title'].'<br />'.$img_name.'</a>'.'</span>';
-        }
-  
-        }
-        catch (Exception $e)
-        {
-          echo 'ただいま障害により大変ご迷惑をお掛けしております。';
-          exit();
-        }
+    $pagination = ceil($page_num / 8);
     ?>
+    <ol>
+    <?php for ($x=1; $x <= $pagination ; $x++) { ?>
+      <a href="?page=<?php echo $x ?>" id="pgn"><?php echo $x; ?></a>
+    <?php } // End of for ?>
+    </ol>
   </div>
 </body>
 </html>
