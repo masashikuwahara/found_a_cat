@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <title>猫を登録する</title>
+  <title>猫を投稿する</title>
   <style>
   .form-select-wrap {
     display: flex;
@@ -25,7 +25,8 @@
 </head>
 <body>
   <div class="form">
-    <h1>すべて入力してください</h1>
+    <h1>猫を投稿する</h1>
+    <h2>全て入力してください</h2>
     <form method="post" action="confirmation.php" enctype="multipart/form-data">
       タイトル<br />
       <input class="tex" type="text" name="title" ><br />
@@ -54,7 +55,7 @@
       </div>
       一言<br />
       <textarea class="textb" type="text" name="comment" ></textarea><br />
-      画像を選んでください。<br />
+      画像を一枚以上選んでください。<br />
       <input type="file" name="img1" ><br /><br />
       <input type="file" name="img2" ><br /><br />
       <input type="file" name="img3" ><br /><br />
